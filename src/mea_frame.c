@@ -5,6 +5,7 @@
 #include <assert.h>
 
 #include "mea.h"
+#include "mea_internal.h"
 
 int64_t sse(const MeaPlane *plane1, const MeaPlane *plane2) {
     const unsigned height = plane1->height;

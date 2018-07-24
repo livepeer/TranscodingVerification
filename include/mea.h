@@ -16,10 +16,8 @@ typedef struct MeaPlane {
     uint8_t *data;
     /// Size in bytes of a plane line
     ptrdiff_t stride;
-    /// Horizontal Subsampling
-    int h_subsampling;
-    /// Vertical Subsampling
-    int v_subsampling;
+    unsigned int width;
+    unsigned int height;
 } MeaPlane;
 
 typedef struct MeaFrame {
@@ -29,8 +27,6 @@ typedef struct MeaFrame {
      * per-plane
      */
     uint8_t *data;
-    size_t width;
-    size_t height;
 
     /// Per Plane information
     MeaPlane planes[3];

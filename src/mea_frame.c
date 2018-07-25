@@ -3,11 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 #include <assert.h>
+#include <math.h>
 
 #include "mea.h"
 #include "mea_internal.h"
 
-int64_t sse(const MeaPlane *plane1, const MeaPlane *plane2) {
+#define TWENTY_LOG_TEN_8BIT (48.13080361)
+
+double psnr(const MeaPlane *plane1, const MeaPlane *plane2) {
     const unsigned height = plane1->height;
     const unsigned width = plane1->width;
     // SSE requires the same frame size.
@@ -28,5 +31,6 @@ int64_t sse(const MeaPlane *plane1, const MeaPlane *plane2) {
         p1 += p1_str;
         p2 += p2_str;
     }
-    return result;
+    const double mse = result / ((double)(height * width));
+    return TWENTY_LOG_TEN_8BIT - 10 * log10(mse);
 }

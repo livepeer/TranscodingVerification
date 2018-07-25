@@ -7,6 +7,6 @@
 #define MEA_INTERNAL_H
 #include "mea.h"
 
-int64_t sse(const MeaPlane *plane1, const MeaPlane *plane2);
+double psnr(const MeaPlane *plane1, const MeaPlane *plane2);
 
-#endif // MEA_INTERNAL_H
+#endif    // MEA_INTERNAL_H

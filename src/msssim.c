@@ -58,8 +58,8 @@ static int gaussian_filter_init(unsigned **_kernel, double _sigma,
     return kernel_sz;
 }
 
-void calc_ssim(const int *_src, int _systride, const int *_dst, int _dystride,
-               int _w, int _h, int max, double *ssim_ret, double *cs_ret) {
+static void calc_ssim(const int *_src, int _systride, const int *_dst, int _dystride,
+                      int _w, int _h, int max, double *ssim_ret, double *cs_ret) {
     ssim_moments *line_buf;
     ssim_moments **lines;
     unsigned *hkernel;
@@ -172,7 +172,7 @@ static void downsample_2x(int32_t *_src1, int _s1ystride, int32_t *_src2,
     }
 }
 
-static double calc_msssim(const MeaPlane *plane1, const MeaPlane *plane2) {
+double msssim(const MeaPlane *plane1, const MeaPlane *plane2) {
     unsigned height = plane1->height;
     unsigned width = plane1->width;
     // MSSSIM requires the same frame size.

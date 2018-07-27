@@ -8,5 +8,6 @@
 #include "mea.h"
 
 double psnr(const MeaPlane *plane1, const MeaPlane *plane2);
+double msssim(const MeaPlane *plane1, const MeaPlane *plane2);
 
 #endif    // MEA_INTERNAL_H

@@ -33,7 +33,7 @@ typedef struct MeaFrame {
 } MeaFrame;
 
 typedef struct MeaSequenceQuality {
-    uint64_t ranking;
+    double ranking;
 } MeaSequenceQuality;
 
 typedef struct MeaFrameQuality {
@@ -63,7 +63,7 @@ int mea_sequence_status(MeaContext *ctx, MeaSequenceQuality *qual);
  *
  * @see mea_sequence_status
  */
-int mea_frame_process(MeaContext *ctx, MeaFrame *ref, MeaFrame *enc,
+int mea_frame_process(MeaContext *ctx, MeaFrame *ref, MeaFrame *rec,
                       MeaFrameQuality *qual);
 
 #endif    // MEA_H

@@ -1,6 +1,6 @@
 mea_sources = [ 'mea_frame.c', 'mea_session.c', 'mea.c', 'msssim.c' ]
 
-shlib = static_library('mea', mea_sources, include_directories
+libmea = static_library('mea', mea_sources, include_directories
                        : inc, dependencies
                        : deps, install
                        : true, c_args

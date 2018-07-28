@@ -2,6 +2,7 @@
  * Copyright 2018 Livepeer
  * SPDX-License-Identifier: MIT
  */
+
 #include <assert.h>
 #include <math.h>
 
@@ -32,5 +33,18 @@ double psnr(const MeaPlane *plane1, const MeaPlane *plane2) {
         p2 += p2_str;
     }
     const double mse = result / ((double)(height * width));
-    return TWENTY_LOG_TEN_8BIT - 10 * log10(mse);
+    double psnr = TWENTY_LOG_TEN_8BIT - 10 * log10(mse);
+
+    // PSNR for Lossless is inf. We saturate at 60
+    return psnr > 60 ? 60 : psnr;
+}
+
+double frame_psnr(const MeaFrame *frame1, const MeaFrame *frame2) {
+    const double psnr_y = psnr(&frame1->planes[0], &frame2->planes[0]);
+    const double psnr_u = psnr(&frame1->planes[1], &frame2->planes[1]);
+    const double psnr_v = psnr(&frame1->planes[2], &frame2->planes[2]);
+    const int subx = frame1->planes[0].width != frame1->planes[1].width;
+    const int suby = frame1->planes[0].height != frame1->planes[1].height;
+    return ((1 << (subx + suby)) * psnr_y + psnr_u + psnr_v) /
+           ((1 << (subx + suby)) + 2);
 }

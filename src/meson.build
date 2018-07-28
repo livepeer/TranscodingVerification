@@ -1,4 +1,4 @@
-mea_sources = [ 'mea_frame.c', 'mea_session.c', 'mea.c', 'msssim.c' ]
+mea_sources = [ 'mea_session.c', 'mea.c', 'msssim.c', 'psnr.c' ]
 
 libmea = static_library('mea', mea_sources, include_directories
                        : inc, dependencies

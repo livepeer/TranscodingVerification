@@ -10,6 +10,8 @@
 double psnr(const MeaPlane *plane1, const MeaPlane *plane2);
 double msssim(const MeaPlane *plane1, const MeaPlane *plane2);
 
+double frame_psnr(const MeaFrame *frame1, const MeaFrame *frame2);
+
 // More complex metrics
 struct MeaContext {
     double qual;

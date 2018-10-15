@@ -42,7 +42,7 @@ typedef struct MeaFrameQuality {
 } MeaFrameQuality;
 
 /// Allocate a default MeaContext
-MeaContext *mea_context_new();
+MeaContext *mea_context_new(void);
 /// Free all the memory used by the context and set it to NULL.
 void mea_context_drop(MeaContext **ctx);
 

@@ -30,6 +30,6 @@ pkg_mod.generate(
   filebase : 'mea',
   description : 'Transcoding Verification through Quality Metrics.',
   subdirs : 'mea',
-  libraries : libmea,
+  libraries : [libmea, deps],
   version : '0.1',
 )
